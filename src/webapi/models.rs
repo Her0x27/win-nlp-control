@@ -29,7 +29,8 @@ pub struct SettingsResponse {
     pub language: String,
     pub notification_enable: bool,
     pub antiflood: bool,
-    pub notifications_delay: u32,
+    pub notification_delay: u32,
+    pub notification_position: u16, // 0 upleft, 1 upright, 2 downleft, 3 downright [up|down][left|right]
     // Add all AppConfig fields here
 }
 
