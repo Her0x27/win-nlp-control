@@ -3,6 +3,19 @@ name = "win-nlp-control"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+default = ["enable_win32"]
+enable_win32 = [
+    "windows/Win32_Foundation",
+    "windows/Win32_UI_WindowsAndMessaging",
+    "windows/Win32_System_Clipboard",
+    "windows/Win32_System_Memory",
+    "windows/Win32_System_Threading",
+    "windows/Win32_Graphics_Gdi",
+    "windows/Win32_UI_Input_KeyboardAndMouse",
+    "windows/Win32_UI_Shell",
+]
+
 [dependencies]
 actix-web = "4"
 serde = { version = "1", features = ["derive"] }
@@ -10,7 +23,7 @@ serde_json = "1"
 tokio = { version = "1", features = ["full"] }
 regex = "1"
 lazy_static = "1"
-rust-stemmers = "1" # Исправлено имя пакета
+rust-stemmers = "1"
 serde_derive = "1.0.166"
 notify = "6.1.1"
 uuid = { version = "1.4.1", features = ["serde", "v4"] }
@@ -21,13 +34,4 @@ log = "0.4"
 image = "0.24.7"
 
 # Add windows crate (re-exporting subset)
-windows = { version = "*", features = [
-    "Win32_Foundation",
-    "Win32_UI_WindowsAndMessaging",
-    "Win32_System_Clipboard",
-    "Win32_System_Memory",
-    "Win32_System_Threading",
-    "Win32_Graphics_Gdi",
-    "Win32_UI_Input_KeyboardAndMouse",
-    "Win32_UI_Shell",
-]}
+windows = { version = "*", optional = true, features = [] }
