@@ -109,7 +109,7 @@ pub fn init_shared_config<P: AsRef<Path>>(config_path: P, on_config_change: Opti
                 language: "en".to_string(),
                 notification_enable: true, // default value
                 antiflood: false, // default value
-                notifications_delay: 500,
+                notification_delay: 500,
              })
         }
     };
