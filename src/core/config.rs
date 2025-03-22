@@ -14,6 +14,8 @@ use log::{info, error, debug}; // Import logging macros
 pub struct AppConfig {
     pub aliases: Vec<AliasConfig>,
     pub language: String,
+    pub notification_enable: bool,
+    pub antiflood: bool,
     pub notifications_delay: u32, // Задержка для уведомлений
 }
 
@@ -23,7 +25,7 @@ pub struct AliasConfig {
     pub alias: String,
     pub intent: String,
     pub parameters: Option<HashMap<String, String>>,
-    pub command_type: Option<String>,
+    pub command_type: Option<String>>,
     pub steps: Option<Vec<AliasConfig>>,
 }
 
@@ -77,6 +79,14 @@ impl AppConfig {
     pub fn get_notifications_delay(&self) -> u32 {
         self.notifications_delay
     }
+
+    pub fn get_notification_enable(&self) -> bool {
+        self.notification_enable
+    }
+
+    pub fn get_antiflood(&self) -> bool {
+        self.antiflood
+    }
 }
 
 /// Shared configuration type used application-wide.
@@ -123,7 +133,7 @@ pub fn init_shared_config<P: AsRef<Path>>(config_path: P, on_config_change: Opti
                 },
                 Ok(_) => {},
                 Err(e) => {
-                    error!("[CONFIG] Watcher error: {:?}", e);
+                    error!("[CONFIG] Watcher error: {}", e);
                     break;
                 }
             }
