@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build
-      run: cargo build --features enable_win32 --verbose
+      run: cargo build --release --features enable_win32 --verbose
     - name: Run tests
       run: cargo test --verbose
