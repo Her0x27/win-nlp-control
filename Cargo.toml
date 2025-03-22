@@ -10,7 +10,7 @@ serde_json = "1"
 tokio = { version = "1", features = ["full"] }
 regex = "1"
 lazy_static = "1"
-rust_stemmers = "1"
+rust-stemmers = "1" # Исправлено имя пакета
 serde_derive = "1.0.166"
 notify = "6.1.1"
 uuid = { version = "1.4.1", features = ["serde", "v4"] }
